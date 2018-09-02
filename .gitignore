@@ -1,3 +1,8 @@
 .import
 *.import
 *.blend[1-9]*
+assets/female/DefaultSkin_001.material
+assets/female/Eye_brown_001.material
+assets/male/DefaultSkin.material
+assets/male/Eye_brown.material
+blendmaps/*_vertices.png

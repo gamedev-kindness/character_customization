@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/female/base-mesh-female.dae" type="PackedScene" id=1]
+
+[node name="base-female" index="0" instance=ExtResource( 1 )]
+

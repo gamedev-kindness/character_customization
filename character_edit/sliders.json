@@ -3,6 +3,7 @@
 		{
 			"name": "Figure",
 			"sliders": [
+				{"type": "slider", "name": "Gender", "min": -100, "max": 100, "default": 0},
 				{"type": "slider", "name": "Height", "min": 0, "max": 100, "default": 0},
 				{"type": "slider", "name": "Thickness", "min": 0, "max": 100, "default": 0},
 				{"type": "slider", "name": "Head size", "min": 0, "max": 100, "default": 0},
@@ -114,5 +115,41 @@
 				{"type": "trait", "name": "Character", "default": "#00000000"}
 			]
 		}
-	]
+	],
+	"target_models": {
+		"base": {
+			"scene": "res://assets/base/base.tscn",
+			"mesh": "makehuman-base"
+		},
+		"male": {
+			"scene": "res://assets/male/base-male.tscn",
+			"mesh": "adult_male_genitalia"
+		},
+		"female": {
+			"scene": "res://assets/female/base-female.tscn",
+			"mesh": "adult_female_genitalia"
+		}
+	},
+	"target_blendmaps": {
+		"male": {
+			"model": "male",
+			"base": "base",
+			"path_vertices": "res://blendmaps/male_vertices.png",
+			"path_normals": "res://blendmaps/male_normals.png"
+		},
+		"female": {
+			"model": "female",
+			"base": "base",
+			"path_vertices": "res://blendmaps/female_vertices.png",
+			"path_normals": "res://blendmaps/female_normals.png"
+		}
+	},
+	"sliders": {
+		"Gender": {
+			"inverted": true,
+			"signed": true,
+			"switch_models": ["female", "male"],
+			"blendmaps": ["female", "male"]
+		}
+	}
 }
