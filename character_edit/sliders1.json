@@ -1,0 +1,103 @@
+{
+	"categories": [
+		"Figure": {
+			"sliders": [
+				{"type": "slider", "name": "Height", "min": 0, "max": 100, "default": 0},
+				{"type": "slider", "name": "Thickness", "min": 0, "max": 100, "default": 0},
+				{"type": "slider", "name": "Head size", "min": 0, "max": 100, "default": 0},
+				{"type": "slider", "name": "Head shape", "min": 0, "max": 100, "default": 0},
+				{"type": "slider", "name": "Waist", "min": 0, "max": 100, "default": 0}
+			]
+		},
+		"Chest": {
+			"sliders": [
+				{"type": "slider", "name": "Size", "min": 0, "max": 100, "default": 0},
+				{"type": "slider", "name": "Shape", "min": 0, "max": 100, "default": 0},
+				{"type": "slider", "name": "Roundness", "min": 0, "max": 100, "default": 0},
+				{"type": "slider", "name": "Direction", "min": 0, "max": 100, "default": 0},
+				{"type": "slider", "name": "Height", "min": 0, "max": 100, "default": 0},
+				{"type": "slider", "name": "Spacing", "min": 0, "max": 100, "default": 0},
+				{"type": "slider", "name": "Depth", "min": 0, "max": 100, "default": 0},
+				{"type": "slider", "name": "Softness", "min": 0, "max": 100, "default": 0},
+				{"type": "slider", "name": "Areola size", "min": 0, "max": 100, "default": 0}
+			]
+		},
+		"Body color": {
+			"sliders": [
+				{"type": "color_picker", "name": "Skin color", "default": "#00000000"},
+				{"type": "nipple_type_list", "name": "Nipple type", "default": 0},
+				{"type": "nipple_color", "name": "Nipple color", "default": "#00000000"},
+				{"type": "slider", "name": "Nipple opacity", "min": 0, "max": 100, "default": 100},
+				{"type": "tan_type_list", "name": "Tan type", "default": 0},
+				{"type": "slider", "name": "Tan opacity", "min": 0, "max": 100, "default": 100},
+				{"type": "vag_type_list", "name": "Vagina type", "default": 0},
+				{"type": "pubic_shape_list", "name": "Pubic shape", "default": 0},
+				{"type": "slider", "name": "Pubic opacity", "min": 0, "max": 100, "default": 100},
+				{"type": "color_picker", "name": "Pubic color", "default": "#00000000"}
+			]
+		},
+		"Face": {
+			"sliders": [
+				{"type": "face_type", "name": "Face type", "default": 0}
+			]
+		},
+		"Eyes": {
+			"sliders": [
+				{"type": "slider", "name": "Eye width", "min": 0, "max": 100, "default": 0},
+				{"type": "slider", "name": "Eye height", "min": 0, "max": 100, "default": 0},
+				{"type": "slider", "name": "Eye position", "min": 0, "max": 100, "default": 0},
+				{"type": "slider", "name": "Eye spacing", "min": 0, "max": 100, "default": 0},
+				{"type": "slider", "name": "Eye angle", "min": 0, "max": 100, "default": 0},
+				{"type": "iris_shape_list", "name": "Iris shape", "default": 0},
+				{"type": "slider", "name": "Iris width", "min": 0, "max": 100, "default": 0},
+				{"type": "slider", "name": "Iris height", "min": 0, "max": 100, "default": 0},
+				{"type": "slider", "name": "Iris position", "min": 0, "max": 100, "default": 0},
+				{"type": "iris_type_list", "name": "Iris type", "default": 0},
+				{"type": "highlight_type_list", "name": "Highlight type", "default": 0}
+			]
+		},
+		"Eyes color": {
+			"sliders": [
+				{"type": "eye_color", "name": "Eye color", "default": 0}
+			]
+		},
+		"Eyebrows": {
+			"sliders": [
+				{"type": "eyebrows", "name": "Eyebrows", "default": 0}
+			]
+		},
+		"Face detail": {
+			"sliders": [
+				{"type": "face_detail", "name": "Face detail", "default": 0}
+			]
+		},
+		"Hair": {
+			"sliders": [
+				{"type": "front_hair_list", "name": "Front hair", "default": 0},
+				{"type": "back_hair_list", "name": "Back hair", "default": 0},
+				{"type": "side_hair_list", "name": "Side hair", "default": 0},
+				{"type": "hair_extension_list", "name": "Hair extension", "default": 0}
+			]
+		},
+		"Hair color": {
+			"sliders": [
+				{"type": "color_picker", "name": "Hair color", "default": "#00000000"}
+			]
+		},
+		"Character": {
+			"sliders": [
+				{"type": "character", "name": "Character", "default": "#00000000"}
+			]
+		},
+		"Personality": {
+			"sliders": [
+				{"type": "personality", "name": "Character", "default": "#00000000"}
+			]
+		},
+		"Trait": {
+			"sliders": [
+				{"type": "trait", "name": "Character", "default": "#00000000"}
+			]
+		}
+	]
+}

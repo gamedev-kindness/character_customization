@@ -1,6 +1,7 @@
 {
 	"categories": [
-		"Figure": {
+		{
+			"name": "Figure",
 			"sliders": [
 				{"type": "slider", "name": "Height", "min": 0, "max": 100, "default": 0},
 				{"type": "slider", "name": "Thickness", "min": 0, "max": 100, "default": 0},
@@ -9,7 +10,8 @@
 				{"type": "slider", "name": "Waist", "min": 0, "max": 100, "default": 0}
 			]
 		},
-		"Chest": {
+		{
+			"name": "Chest",
 			"sliders": [
 				{"type": "slider", "name": "Size", "min": 0, "max": 100, "default": 0},
 				{"type": "slider", "name": "Shape", "min": 0, "max": 100, "default": 0},
@@ -22,7 +24,8 @@
 				{"type": "slider", "name": "Areola size", "min": 0, "max": 100, "default": 0}
 			]
 		},
-		"Body color": {
+		{
+			"name": "Body color",
 			"sliders": [
 				{"type": "color_picker", "name": "Skin color", "default": "#00000000"},
 				{"type": "nipple_type_list", "name": "Nipple type", "default": 0},
@@ -36,12 +39,14 @@
 				{"type": "color_picker", "name": "Pubic color", "default": "#00000000"}
 			]
 		},
-		"Face": {
+		{
+			"name": "Face",
 			"sliders": [
 				{"type": "face_type", "name": "Face type", "default": 0}
 			]
 		},
-		"Eyes": {
+		{
+			"name": "Eyes",
 			"sliders": [
 				{"type": "slider", "name": "Eye width", "min": 0, "max": 100, "default": 0},
 				{"type": "slider", "name": "Eye height", "min": 0, "max": 100, "default": 0},
@@ -56,22 +61,26 @@
 				{"type": "highlight_type_list", "name": "Highlight type", "default": 0}
 			]
 		},
-		"Eyes color": {
+		{
+			"name": "Eyes color",
 			"sliders": [
 				{"type": "eye_color", "name": "Eye color", "default": 0}
 			]
 		},
-		"Eyebrows": {
+		{
+			"name": "Eyebrows",
 			"sliders": [
 				{"type": "eyebrows", "name": "Eyebrows", "default": 0}
 			]
 		},
-		"Face detail": {
+		{
+			"name": "Face detail",
 			"sliders": [
 				{"type": "face_detail", "name": "Face detail", "default": 0}
 			]
 		},
-		"Hair": {
+		{
+			"name": "Hair",
 			"sliders": [
 				{"type": "front_hair_list", "name": "Front hair", "default": 0},
 				{"type": "back_hair_list", "name": "Back hair", "default": 0},
@@ -79,22 +88,28 @@
 				{"type": "hair_extension_list", "name": "Hair extension", "default": 0}
 			]
 		},
-		"Hair color": {
+		{
+			"name": "Hair color",
 			"sliders": [
 				{"type": "color_picker", "name": "Hair color", "default": "#00000000"}
 			]
 		},
-		"Character": {
+		{
+			"name": "Character",
 			"sliders": [
+				{"type": "string", "name": "First name", "default": "Anonymous"},
+				{"type": "string", "name": "Last name", "default": "Coward"},
 				{"type": "character", "name": "Character", "default": "#00000000"}
 			]
 		},
-		"Personality": {
+		{
+			"name": "Personality",
 			"sliders": [
 				{"type": "personality", "name": "Character", "default": "#00000000"}
 			]
 		},
-		"Trait": {
+		{
+			"name": "Trait",
 			"sliders": [
 				{"type": "trait", "name": "Character", "default": "#00000000"}
 			]
