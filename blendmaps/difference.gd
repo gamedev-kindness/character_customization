@@ -2,8 +2,6 @@ extends Node2D
 
 onready var view = get_parent().get_node("blendmap_viewport")
 onready var progress = get_parent().get_node("progress")
-export (String) var first = "makehuman-base"
-export (String) var second = "female"
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -97,51 +95,6 @@ func _ready():
 		image1.unlock()
 		image2.unlock()
 		create_png(image_diff, bm.path_vertices)
-	return
-		
-		
-
-	if first == null || second == null:
-		return
-	var first_mi = find_mesh_instance($base, first)
-	var second_mi = find_mesh_instance($"base-female", second)
-	var image1 = yield(view.update_viewport(first_mi), "completed")
-	pr = 1.0
-	progress.set_value(pr)
-	var image2 = yield(view.update_viewport(second_mi), "completed")
-	pr = 2.0
-	progress.set_value(pr)
-	create_png(image1, "res://blendmaps/" + first_mi.get_name() + ".png")
-	create_png(image2, "res://blendmaps/" + second_mi.get_name() + ".png")
-	pr = 3.0
-	progress.set_value(pr)
-	var image_diff = Image.new()
-	image_diff.copy_from(image2)
-	image_diff.lock()
-	image1.lock()
-	image2.lock()
-	var incr = (100 - pr) / image1.get_height()
-	var count_max = image1.get_height() / 30
-	var count = 0
-	for k in range(image1.get_height()):
-		pr += incr
-		progress.set_value(pr)
-		var maxdiff = Vector3()
-		for l in range(image1.get_width()):
-			var c1 = image1.get_pixel(l, k)
-			var c2 = image2.get_pixel(l, k)
-			var diff = Vector3(c2.r - c1.r + 1.0, c2.g - c1.g + 1.0, c2.b - c1.b + 1.0) * 0.5
-			var cdiff = Color(diff.x, diff.y, diff.z, 1.0)
-			image_diff.set_pixel(l, k, cdiff)
-		count += 1
-		if count > count_max:
-			yield(get_tree(), "idle_frame")
-			count = 0
-	image_diff.unlock()
-	image1.unlock()
-	image2.unlock()
-	
-	create_png(image_diff, "res://blendmaps/" + second_mi.get_name() + "_diff.png")
 	print("done")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
