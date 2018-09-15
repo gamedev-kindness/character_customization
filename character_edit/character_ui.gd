@@ -1,28 +1,23 @@
 extends Control
 
+func apply_slider(name, oldval, newval):
+	update_scene(name, oldval, newval)
+
 func slider_update(val, obj, cat, entry):
-	print(cat + "::" + entry + " changed to " + str(val))
+#	print(cat + "::" + entry + " changed to " + str(val))
+	var conf = globals.config
+	if conf.sliders.has(entry):
+		apply_slider(entry, globals.character_copy[entry], val)
 	globals.character_copy[entry] = val
 func text_update(val, obj, cat, entry):
 	print(cat + "::" + entry + " changed to " + str(val))
 	globals.character_copy[entry] = val
+func update_scene(entry, old_val, new_val):
+	$Gender.update($VBoxContainer/HBoxContainer/ViewportContainer/Viewport/charscene_root, entry, old_val, new_val)
 func _ready():
+	var config = globals.config
 	if globals.character_copy == null:
 		globals.character_copy = {}
-	var fd = File.new()
-	fd.open("res://character_edit/sliders.json", fd.READ)
-	var jdata = fd.get_as_text()
-#	var jlines = jdata.split("\n", false)
-#	jdata = ""
-#	for k in jlines:
-#		jdata += k
-	var d = JSON.parse(jdata)
-	if d.error != OK:
-		print(d.error_string)
-		print(d.error_line)
-		print(d.result)
-		return
-	var config = d.result
 	for k in config.categories:
 		print(k.name)
 		var c = preload("res://character_edit/scroll.tscn").instance()
@@ -57,3 +52,4 @@ func _ready():
 				var control = Control.new()
 				scrolldata.add_child(control)
 		$VBoxContainer/HBoxContainer/Tabs.add_child(c)
+	update_scene("", -1, 0)

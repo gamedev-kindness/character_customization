@@ -128,6 +128,18 @@
 		"female": {
 			"scene": "res://assets/female/base-female.tscn",
 			"mesh": "adult_female_genitalia"
+		},
+		"base-eyes": {
+			"scene": "res://assets/base/base.tscn",
+			"mesh": "eyes"
+		},
+		"male-eyes": {
+			"scene": "res://assets/male/base-male.tscn",
+			"mesh": "eyes"
+		},
+		"female-eyes": {
+			"scene": "res://assets/female/base-female.tscn",
+			"mesh": "eyes"
 		}
 	},
 	"target_blendmaps": {
@@ -135,21 +147,41 @@
 			"model": "male",
 			"base": "base",
 			"path_vertices": "res://blendmaps/male_vertices.png",
-			"path_normals": "res://blendmaps/male_normals.png"
+			"path_normals": "res://blendmaps/male_normals.png",
+			"multiplier_p": 1.0,
+			"multiplier_n": 1.0
 		},
 		"female": {
 			"model": "female",
 			"base": "base",
 			"path_vertices": "res://blendmaps/female_vertices.png",
-			"path_normals": "res://blendmaps/female_normals.png"
+			"path_normals": "res://blendmaps/female_normals.png",
+			"multiplier_p": 1.0,
+			"multiplier_n": 1.0
+		},
+		"male-eyes": {
+			"model": "male-eyes",
+			"base": "base-eyes",
+			"path_vertices": "res://blendmaps/male_eyes_vertices.png",
+			"path_normals": "res://blendmaps/male_eyes_normals.png",
+			"multiplier_p": 0.08,
+			"multiplier_n": 1.0
+		},
+		"female-eyes": {
+			"model": "female-eyes",
+			"base": "base-eyes",
+			"path_vertices": "res://blendmaps/female_eyes_vertices.png",
+			"path_normals": "res://blendmaps/female_eyes_normals.png",
+			"multiplier_p": 0.08,
+			"multiplier_n": 1.0
 		}
 	},
 	"sliders": {
 		"Gender": {
 			"inverted": true,
 			"signed": true,
-			"switch_models": ["female", "male"],
-			"blendmaps": ["female", "male"]
+			"switch_models": [["male", "male-eyes"], ["female", "female-eyes"]],
+			"blendmaps": [["male", "male-eyes"], ["female", "female-eyes"]]
 		}
 	}
 }

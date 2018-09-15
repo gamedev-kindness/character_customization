@@ -7,38 +7,8 @@ onready var progress = get_parent().get_node("progress")
 # var b = "text"
 
 # Called when the node enters the scene tree for the first time.
-func find_mesh_instance(root, name):
-	var queue = root.get_children().duplicate()
-	while queue.size() > 0:
-		var item = queue[0]
-		if item is MeshInstance && item.get_name().find(name) >= 0:
-			return item
-		queue.pop_front()
-		for k in item.get_children():
-			queue.append(k)
-	return null
-
-func create_png(img, path):
-	var dir = Directory.new()
-	if dir.file_exists(path):
-		dir.remove(path)
-	img.save_png(path)
-	
 func _ready():
-	var fd = File.new()
-	fd.open("res://character_edit/sliders.json", fd.READ)
-	var jdata = fd.get_as_text()
-#	var jlines = jdata.split("\n", false)
-#	jdata = ""
-#	for k in jlines:
-#		jdata += k
-	var d = JSON.parse(jdata)
-	if d.error != OK:
-		print(d.error_string)
-		print(d.error_line)
-		print(d.result)
-		return
-	var config = d.result
+	var config = globals.config
 	var pr = 0.0
 	progress.set_value(pr)
 	var pr_inc_map = 100.0 / config.target_blendmaps.keys().size()
@@ -58,19 +28,39 @@ func _ready():
 		print(base_data)
 		var model_scene = load(model_data.scene).instance()
 		add_child(model_scene)
-		var model_mi = find_mesh_instance(model_scene, model_data.mesh)
+		var model_mi = globals.find_mesh_instance(model_scene, model_data.mesh)
 		var base_scene = load(base_data.scene).instance()
 		add_child(base_scene)
-		var base_mi = find_mesh_instance(base_scene, base_data.mesh)
+		var base_mi = globals.find_mesh_instance(base_scene, base_data.mesh)
 		if model_mi == null || base_mi == null:
 			continue
-		var image1 = yield(view.update_viewport(model_mi), "completed")
+		var img_v = Image.new()
+		img_v.create(1024, 1024, false, Image.FORMAT_RGB8)
+		var img_n = Image.new()
+		img_n.create(1024, 1024, false, Image.FORMAT_RGB8)
+		var model_grid = $grid.build_grid(model_mi.get_mesh())
+		var base_grid = $grid.build_grid(base_mi.get_mesh())
+		$grid.build_difference(model_grid, base_grid, img_v, img_n)
+		globals.create_png(img_v, bm.path_vertices)
+		globals.create_png(img_n, bm.path_normals)
+		continue
+		print("p1")
+		var image1 = yield(view.update_viewport(model_mi, 0), "completed")
 		pr += pr_inc_map / 30.0
 		progress.set_value(pr)
-		var image2 = yield(view.update_viewport(base_mi), "completed")
+		print("p2")
+		var image2 = yield(view.update_viewport(base_mi, 0), "completed")
 		pr += pr_inc_map / 30.0
 		progress.set_value(pr)
-		var incr = (pr_inc_map - 2.0 * pr_inc_map / 30.0) / image1.get_height()
+		print("p3")
+		var image3 = yield(view.update_viewport(model_mi, 1), "completed")
+		pr += pr_inc_map / 30.0
+		progress.set_value(pr)
+		print("p4")
+		var image4 = yield(view.update_viewport(base_mi, 1), "completed")
+		pr += pr_inc_map / 30.0
+		progress.set_value(pr)
+		var incr = (pr_inc_map - 4.0 * pr_inc_map / 30.0) / (2.0 * image1.get_height())
 		var count_max = image1.get_height() / 30
 		var count = 0
 		var image_diff = Image.new()
@@ -94,7 +84,32 @@ func _ready():
 		image_diff.unlock()
 		image1.unlock()
 		image2.unlock()
-		create_png(image_diff, bm.path_vertices)
+		globals.create_png(image_diff, bm.path_vertices)
+		image_diff.copy_from(image3)
+		image_diff.lock()
+		image3.lock()
+		image4.lock()
+		for k in range(image3.get_height()):
+			for l in range(image3.get_width()):
+				var c1 = image3.get_pixel(l, k)
+				var c2 = image4.get_pixel(l, k)
+				var diff = Vector3(c2.r - c1.r + 1.0, c2.g - c1.g + 1.0, c2.b - c1.b + 1.0) * 0.5
+				var cdiff = Color(diff.x, diff.y, diff.z, 1.0)
+				image_diff.set_pixel(l, k, cdiff)
+			count += 1
+			pr += incr
+			progress.set_value(pr)
+			if count > count_max:
+				yield(get_tree(), "idle_frame")
+				count = 0
+		image_diff.unlock()
+		image3.unlock()
+		image4.unlock()
+		globals.create_png(image_diff, bm.path_normals)
+		remove_child(model_scene)
+		model_scene.queue_free()
+		remove_child(base_scene)
+		base_scene.queue_free()
 	print("done")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

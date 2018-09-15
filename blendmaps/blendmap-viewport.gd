@@ -5,11 +5,11 @@ extends Viewport
 # var b = "text"
 
 # Called when the node enters the scene tree for the first time.
-func update_viewport(mi):
+func update_viewport(mi, mode):
 	render_target_update_mode = Viewport.UPDATE_ALWAYS
 	yield(get_tree(), "idle_frame")
 	yield(get_tree(), "idle_frame")
-	$blendmap.mi_mesh_texture(mi, size)
+	$blendmap.mi_mesh_texture(mi, size, mode)
 	yield(get_tree(), "idle_frame")
 	yield(get_tree(), "idle_frame")
 	render_target_update_mode = Viewport.UPDATE_DISABLED

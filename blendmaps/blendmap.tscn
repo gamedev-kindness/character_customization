@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://blendmaps/difference.gd" type="Script" id=1]
-[ext_resource path="res://blendmaps/blendmap-viewport.gd" type="Script" id=2]
-[ext_resource path="res://blendmaps/blendmap.gd" type="Script" id=3]
+[ext_resource path="res://blendmaps/grid.gd" type="Script" id=2]
+[ext_resource path="res://blendmaps/blendmap-viewport.gd" type="Script" id=3]
+[ext_resource path="res://blendmaps/blendmap.gd" type="Script" id=4]
 
 [node name="blendmap-build" type="Control"]
 anchor_left = 0.0
@@ -18,6 +19,9 @@ size_flags_vertical = 1
 
 [node name="difference" type="Node2D" parent="."]
 script = ExtResource( 1 )
+
+[node name="grid" type="Node" parent="difference"]
+script = ExtResource( 2 )
 
 [node name="blendmap_viewport" type="Viewport" parent="."]
 arvr = false
@@ -44,11 +48,11 @@ shadow_atlas_quad_0 = 2
 shadow_atlas_quad_1 = 2
 shadow_atlas_quad_2 = 3
 shadow_atlas_quad_3 = 4
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 _sections_unfolded = [ "Rendering" ]
 
 [node name="blendmap" type="Node2D" parent="blendmap_viewport"]
-script = ExtResource( 3 )
+script = ExtResource( 4 )
 
 [node name="progress" type="ProgressBar" parent="."]
 anchor_left = 0.0
