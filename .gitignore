@@ -6,3 +6,10 @@ assets/female/Eye_brown_001.material
 assets/male/DefaultSkin.material
 assets/male/Eye_brown.material
 blendmaps/*_vertices.png
+!assets/male/base-mesh-male.dae.import
+!assets/base/base-mesh.dae.import
+!assets/female/base-mesh-female.dae.import
+!blendmaps/female_eyes_vertices.png.import
+!blendmaps/male_eyes_vertices.png.import
+!blendmaps/female_vertices.png.import
+!blendmaps/male_vertices.png.import
